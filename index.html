@@ -1,1 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RafaLi Cruise Ship 🚢</title>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    background:linear-gradient(145deg,#334c70,#54a8c8,#dda7a2,#00172c);
+    color:#050505;
+}
+
+.menu{
+    position:fixed;
+    top:0;
+    left:0;
+    width:70px;
+    height:100vh;
+    background:#1111ff;
+    z-index:10;
+}
+
+.menu-icon{
+    font-size:42px;
+    text-align:center;
+    padding-top:25px;
+}
+
+main{
+    margin-left:70px;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    margin:5px 0 70px;
+}
+
+.ship{
+    max-width:480px;
+    margin:0 auto 80px;
+    cursor:pointer;
+}
+
+.ship img{
+    width:100%;
+    min-height:220px;
+    object-fit:cover;
+    background:#678;
+}
+
+.ship-info{
+    font-size:29px;
+    font-weight:bold;
+    padding:12px;
+}
+
+/* PAIEMENT */
+
+.payment{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:#242424;
+    color:white;
+    padding:30px 20px;
+}
+
+.back{
+    font-size:45px;
+    cursor:pointer;
+}
+
+.price{
+    font-size:60px;
+    margin-top:60px;
+}
+
+.payments{
+    margin-top:50px;
+    display:flex;
+    gap:20px;
+}
+
+.pay{
+    flex:1;
+    min-height:180px;
+    border:0;
+    border-radius:45px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.apple{
+    background:#050505;
+    color:white;
+}
+
+.rafali{
+    background:#55ddc2;
+}
+
+.demo{
+    font-size:14px;
+    opacity:.7;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    margin-top:55px;
+    font-size:32px;
+}
+
+@media(max-width:600px){
+    .payments{
+        flex-direction:column;
+    }
+
+    .pay{
+        min-height:130px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+    <div class="menu-icon">☰</div>
+</div>
+
+<main>
+
+<h1>
+Welcome By RafaLi<br>
+Cruise Ship 🚢
+</h1>
+
+<div class="ship" onclick="openPayment('RafaLi Boss',499)">
+    <img src="rafali-boss.jpg" alt="RafaLi Boss">
+    <div class="ship-info">
+        RafaLi Boss<br>
+        499 Fr. • 6 Day
+    </div>
+</div>
+
+<div class="ship" onclick="openPayment('Giant Guy',650)">
+    <img src="giant-guy.jpg" alt="Giant Guy">
+    <div class="ship-info">
+        Giant Guy<br>
+        650 Fr. • 7 Day
+    </div>
+</div>
+
+</main>
+
+<div id="payment" class="payment">
+
+    <div class="back" onclick="closePayment()">←</div>
+
+    <div id="price" class="price">
+        499 Fr.
+    </div>
+
+    <div class="payments">
+
+        <button class="pay apple" onclick="pay()">
+             Pay
+            <br>
+            <span class="demo">GAME DEMO</span>
+        </button>
+
+        <button id="shipName" class="pay rafali" onclick="pay()">
+            RafaLi Boss
+        </button>
+
+    </div>
+
+    <div id="success" class="success">
+        ✅ Payment successful!
+        <br><br>
+        🎫 Cruise booked!
+        <br>
+        🚢 Welcome aboard!
+    </div>
+
+</div>
+
+<script>
+
+function openPayment(name,price){
+    document.getElementById("payment").style.display="block";
+    document.getElementById("price").innerText=price+" Fr.";
+    document.getElementById("shipName").innerText=name;
+    document.getElementById("success").style.display="none";
+}
+
+function closePayment(){
+    document.getElementById("payment").style.display="none";
+}
+
+function pay(){
+    document.getElementById("success").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
